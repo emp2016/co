@@ -46,10 +46,16 @@
 		return $camp;
 	}
 	function afisareDetaliata($afc,$nume){
+/*
 		$anul0Functie=date("Y");
 		$anul1Functie=$anul0Functie-1;
 		$anul2Functie=$anul0Functie+1;
 		$sirAniFunctie=[$anul1Functie,$anul0Functie,$anul2Functie];
+*/
+		$anul0Functie=date("Y");
+		$anul1Functie=$anul0Functie-1;
+		$anul2Functie=$anul0Functie-2;
+		$sirAniFunctie=[$anul2Functie,$anul1Functie,$anul0Functie];
 		$con=new PDO('mysql:host='.server.';dbname='.bazadate, user, parola);
 
 		$sqlPrimulAn="select year(dataSfarsit) as anulEfectuarii,sum(numarZile) as efectuate,an from concediu where nume=:nume and stare=1 and an=:afc and YEAR(dataSfarsit)=:primulAn";
@@ -77,9 +83,21 @@
 	}
 	
 	function aflaZileLucratoare($startDate, $endDate){
+		date_default_timezone_set('UTC');/*setam default time zone la UTC pentru numarul exact de zile, nu am probleme in octombrie cu schimarea orei*/
 		$begin=strtotime($startDate);
 		$end=strtotime($endDate);
 		//excludem zilele de sarbatoare
+///////////
+		//pentru anul 2020
+		$ziDeSarbatoare1=strtotime(date('2020-12-25'));//Craciun 2020
+		if(($begin<=$ziDeSarbatoare1)&&($ziDeSarbatoare1<=$end)){
+			$eliminare2020=1;
+		}
+		else{
+			$eliminare2020=0;
+		}
+/////////
+
 		$ziDeSarbatoare1=strtotime(date('Y-01-01'));//anul nou
 		if(($begin<=$ziDeSarbatoare1)&&($ziDeSarbatoare1<=$end)){
 			$eliminare1=1;
@@ -87,6 +105,7 @@
 		else{
 			$eliminare1=0;
 		}
+/*
 		$ziDeSarbatoare2=strtotime(date('Y-01-02'));//a doua zi de An Nou
 		if(($begin<=$ziDeSarbatoare2)&&($ziDeSarbatoare2<=$end)){
 			$eliminare2=1;
@@ -101,14 +120,15 @@
 		else{
 			$eliminare3=0;
 		}
-		$ziDeSarbatoare4=strtotime(date('Y-04-17'));//Vinerea Mare
+*/
+		$ziDeSarbatoare4=strtotime(date('Y-04-30'));//Vinerea Mare
 		if(($begin<=$ziDeSarbatoare4)&&($ziDeSarbatoare4<=$end)){
 			$eliminare4=1;
 		}
 		else{
 			$eliminare4=0;
 		}
-		$ziDeSarbatoare5=strtotime(date('Y-04-20'));//A doua zi de Paste
+		$ziDeSarbatoare5=strtotime(date('Y-05-03'));//A doua zi de Paste
 		if(($begin<=$ziDeSarbatoare5)&&($ziDeSarbatoare5<=$end)){
 			$eliminare5=1;
 		}
@@ -129,7 +149,7 @@
 		else{
 			$eliminare7=0;
 		}
-		$ziDeSarbatoare8=strtotime(date('Y-06-08'));//A doua zi de Rusalii
+		$ziDeSarbatoare8=strtotime(date('Y-06-21'));//A doua zi de Rusalii
 		if(($begin<=$ziDeSarbatoare8)&&($ziDeSarbatoare8<=$end)){
 			$eliminare8=1;
 		}
@@ -172,7 +192,7 @@
 				 };
 				$begin+=86400; // adaugam 1 zi
 		  }
-		  $eliminare=$eliminare1+$eliminare2+$eliminare3+$eliminare4+$eliminare5+$eliminare6+$eliminare7+$eliminare8+$eliminare9+$eliminare10+$eliminare11;
+		  $eliminare=$eliminare1+$eliminare2+$eliminare3+$eliminare4+$eliminare5+$eliminare6+$eliminare7+$eliminare8+$eliminare9+$eliminare10+$eliminare11+$eliminare2020;
 		  $working_days=$no_days-$weekends-$eliminare;
 		  return $working_days;
 	 	}

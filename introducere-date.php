@@ -111,10 +111,16 @@
 				echo'Concediu aferent anului:';
 				echo'<select name="anAles">';
 					echo'<option value="0">...</option>';
+/*
 					$an0=date("Y");
 					$an1=$an0-1;
 					$an2=$an0+1;
 					$sirAnAles=array($an1,$an0,$an2);
+*/
+					$an0=date("Y");
+					$an1=$an0-1;
+					$an2=$an0-2;
+					$sirAnAles=array($an2,$an1,$an0);
 					foreach($sirAnAles as $key=>$value){
 						echo'<option value="'.$value.'"';
 						if(isset($anAles)&&($anAles==$value)){
