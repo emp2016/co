@@ -16,7 +16,7 @@
 			$okNumePersonalModifica = 1;
 		}
 		if(isset($_POST['numePersonalModifica'])){
-			if($_POST['numePersonalModifica']=='...'){
+			if(empty($_POST['numePersonalModifica'])){
 				$numePersonalModificaEroare = 'Obligatoriu';
 			}
 			else{
@@ -24,35 +24,24 @@
 				$okNumePersonalModifica = 1;
 			}
 		}
-		if($okNumePersonalModifica == 1){//am ales un nume
-			$sir = ['numePersonalModifica'=>$numePersonalModifica];
-			$sql1="SELECT * FROM personal_modificat WHERE nume=:numePersonalModifica AND stare=1";
-			$stmt1 = $con->prepare($sql1);
-			$stmt1->execute($sir);		
-		}
 		echo'<div class="col-9 col-s-12">';
 			echo'<h3>Modificare date personal:</h3>';
 			echo'<form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="POST">';
-				echo'Nume:&nbsp;&nbsp;';
-				echo'<select name="numePersonalModifica" onchange="this.form.submit()">';
-					echo'<option value="0">...</option>';
-					//afisam numele din tabelul personal_modificat
-					$sql = "SELECT DISTINCT(nume) FROM personal_modificat WHERE stare=1 ORDER BY nume ASC";
-					$stmt=$con->prepare($sql);
-					$stmt->execute();
-					while($row=$stmt->fetch()){
-						echo'<option value="'.$row['nume'].'"';
-						if(isset($numePersonalModifica)&&($numePersonalModifica==$row['nume'])){
-							echo'selected';
-						}
-						echo'>'.$row['nume'].'</option>';
-					}
-				echo'</select><span class="eroare">*'.$numePersonalModificaEroare.'</span><br /><br />';
+echo'Nume:&nbsp;&nbsp;<input type="text" name="numePersonalModifica" value="'.$numePersonalModifica.'" placeholder="Introduceti un nume" onchange="this.form.submit()" autofocus><span class="eroare">*'.$numePersonalModificaEroare.'</span><br /><br />';
 			echo'</form>';
-			if(isset($stmt1)&&($stmt1!=='')&&($stmt->rowCount()>0)){
-				$row1=$stmt1->fetch();
+			//echo $numePersonalModifica.'****'.$okNumePersonalModifica.'<br />';
+			if($okNumePersonalModifica == 1){
+				$sir = ["%".ucfirst($numePersonalModifica)."%"];
+				$sql1="SELECT * FROM personal_modificat WHERE nume like ? AND stare=1  GROUP BY nume ASC ";
+				$stmt1 = $con->prepare($sql1);
+				$stmt1->execute($sir);		
+				while($row1=$stmt1->fetch()){
+echo'<a href="modifica-date-personal.php?nume='.$row1['nume'].'">'.$row1['nume'].'</a><br /><br />';
+				}
+/*
 				echo'<form action="modifica-date-personal.php" method="POST">';
-					echo'<input type="hidden" name="nume4" value="'.$numePersonalModifica.'">';
+					//echo'<input type="hidden" name="nume4" value="'.$numePersonalModifica.'">';
+					echo'<input type="text" name="nume4" value="'.$numePersonalModifica.'">';
 					echo'Instanta:&nbsp;&nbsp;';
 					echo'<select name="instanta1">';//afisam instantele
 						echo'<option value="'.$row1['instanta'].'" selected>'.$row1['instanta'].'</option>';
@@ -105,6 +94,7 @@
 								&nbsp;&nbsp;<input type="submit" name="sterge" value="Sterge" onClick="javascript:return confirm('Stergeti datele in baza de date?');">
 <?php					
 				echo'</form>';
+				*/
 			}
 		echo'</div>';//end div class col-9 col-s-12
 		jos();

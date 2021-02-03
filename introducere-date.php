@@ -97,7 +97,7 @@
 				echo'<select name="numePersonal">';
 					echo'<option value="Alegeti o persoana">Alegeti o persoana</option>';
 					//populam option cu valorile din baza de date
-					$query = "SELECT * FROM personal WHERE stare=1 ORDER BY nume ASC";
+					$query = "SELECT DISTINCT (nume) FROM personal_modificat WHERE stare=1 ORDER BY nume ASC";
 					$stmtPersonal = $con->prepare($query);
 					$stmtPersonal->execute();
 					while($row=$stmtPersonal->fetch()){
