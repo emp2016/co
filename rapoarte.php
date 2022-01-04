@@ -91,9 +91,11 @@
 				$anul2=$anul0+1;
 */
 				$anul0=date("Y");
-				$anul1=$anul0-1;
-				$anul2=$anul0-2;
-				$sirAni=[$anul2,$anul1,$anul0];
+				$anul1=$anul0-2;
+				$anul2=$anul0-1;
+				//$an_provizoriu = '2022';//introdus anul 2022 PROVIZORIU
+
+				$sirAni=[$anul1,$anul2,$anul0];
 				echo'<table class="tabel">';
 					echo'<tr>';
 						echo'<th>Concediul aferent anului</th>';

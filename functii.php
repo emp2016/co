@@ -53,9 +53,9 @@
 		$sirAniFunctie=[$anul1Functie,$anul0Functie,$anul2Functie];
 */
 		$anul0Functie=date("Y");
-		$anul1Functie=$anul0Functie-1;
-		$anul2Functie=$anul0Functie-2;
-		$sirAniFunctie=[$anul2Functie,$anul1Functie,$anul0Functie];
+		$anul1Functie=$anul0Functie-2;
+		$anul2Functie=$anul0Functie-1;
+		$sirAniFunctie=[$anul1Functie,$anul2Functie,$anul0Functie];
 		$con=new PDO('mysql:host='.server.';dbname='.bazadate, user, parola);
 
 		$sqlPrimulAn="select year(dataSfarsit) as anulEfectuarii,sum(numarZile) as efectuate,an from concediu where nume=:nume and stare=1 and an=:afc and YEAR(dataSfarsit)=:primulAn";
