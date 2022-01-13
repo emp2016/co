@@ -87,7 +87,7 @@
 		$begin=strtotime($startDate);
 		$end=strtotime($endDate);
 		//excludem zilele de sarbatoare
-///////////
+/*
 		//pentru anul 2020
 		$ziDeSarbatoare1=strtotime(date('2020-12-25'));//Craciun 2020
 		if(($begin<=$ziDeSarbatoare1)&&($ziDeSarbatoare1<=$end)){
@@ -96,45 +96,47 @@
 		else{
 			$eliminare2020=0;
 		}
-/////////
+*/
 
-		$ziDeSarbatoare1=strtotime(date('Y-01-01'));//anul nou
-		if(($begin<=$ziDeSarbatoare1)&&($ziDeSarbatoare1<=$end)){
-			$eliminare1=1;
+		$ziDeSarbatoareAN=strtotime(date('Y-01-01'));//anul nou(AN)
+		if(($begin<=$ziDeSarbatoareAN)&&($ziDeSarbatoareAN<=$end)){
+			$eliminareAN=1;
 		}
 		else{
-			$eliminare1=0;
+			$eliminareAN=0;
+		}
+
+		$ziDeSarbatoareAN2=strtotime(date('Y-01-02'));//a doua zi de An Nou(AN2)
+		if(($begin<=$ziDeSarbatoareAN2)&&($ziDeSarbatoareAN2<=$end)){
+			$eliminareAN2=1;
+		}
+		else{
+			$eliminareAN2=0;
+		}
+
+		$ziDeSarbatoareZUP=strtotime(date('Y-01-24'));//Ziua Unirii Principatelor(ZUP)
+		if(($begin<=$ziDeSarbatoareZUP)&&($ziDeSarbatoareZUP<=$end)){
+			$eliminareZUP=1;
+		}
+		else{
+			$eliminareZUP=0;
+		}
+
+		$ziDeSarbatoareVM=strtotime(date('Y-04-22'));//Vinerea Mare(VM)
+		if(($begin<=$ziDeSarbatoareVM)&&($ziDeSarbatoareVM<=$end)){
+			$eliminareVM=1;
+		}
+		else{
+			$eliminareVM=0;
+		}
+		$ziDeSarbatoareA2P=strtotime(date('Y-04-25'));//A doua zi de Paste(A2P)
+		if(($begin<=$ziDeSarbatoareA2P)&&($ziDeSarbatoareA2P<=$end)){
+			$eliminareA2P=1;
+		}
+		else{
+			$eliminareA2P=0;
 		}
 /*
-		$ziDeSarbatoare2=strtotime(date('Y-01-02'));//a doua zi de An Nou
-		if(($begin<=$ziDeSarbatoare2)&&($ziDeSarbatoare2<=$end)){
-			$eliminare2=1;
-		}
-		else{
-			$eliminare2=0;
-		}
-		$ziDeSarbatoare3=strtotime(date('Y-01-24'));//Ziua Unirii Principatelor
-		if(($begin<=$ziDeSarbatoare3)&&($ziDeSarbatoare3<=$end)){
-			$eliminare3=1;
-		}
-		else{
-			$eliminare3=0;
-		}
-*/
-		$ziDeSarbatoare4=strtotime(date('Y-04-30'));//Vinerea Mare
-		if(($begin<=$ziDeSarbatoare4)&&($ziDeSarbatoare4<=$end)){
-			$eliminare4=1;
-		}
-		else{
-			$eliminare4=0;
-		}
-		$ziDeSarbatoare5=strtotime(date('Y-05-03'));//A doua zi de Paste
-		if(($begin<=$ziDeSarbatoare5)&&($ziDeSarbatoare5<=$end)){
-			$eliminare5=1;
-		}
-		else{
-			$eliminare5=0;
-		}
 		$ziDeSarbatoare6=strtotime(date('Y-05-01'));//1 Mai
 		if(($begin<=$ziDeSarbatoare6)&&($ziDeSarbatoare6<=$end)){
 			$eliminare6=1;
@@ -142,40 +144,55 @@
 		else{
 			$eliminare6=0;
 		}
-		$ziDeSarbatoare7=strtotime(date('Y-06-01'));//1 Iunie
-		if(($begin<=$ziDeSarbatoare7)&&($ziDeSarbatoare7<=$end)){
-			$eliminare7=1;
+*/
+		$ziDeSarbatoare1I=strtotime(date('Y-06-01'));//1 Iunie(1I)
+		if(($begin<=$ziDeSarbatoare1I)&&($ziDeSarbatoare1I<=$end)){
+			$eliminare1I=1;
 		}
 		else{
-			$eliminare7=0;
+			$eliminare1I=0;
 		}
-		$ziDeSarbatoare8=strtotime(date('Y-06-21'));//A doua zi de Rusalii
-		if(($begin<=$ziDeSarbatoare8)&&($ziDeSarbatoare8<=$end)){
-			$eliminare8=1;
-		}
-		else{
-			$eliminare8=0;
-		}
-		$ziDeSarbatoare9=strtotime(date('Y-11-30'));//Sfantul Apostol Andrei
-		if(($begin<=$ziDeSarbatoare9)&&($ziDeSarbatoare9<=$end)){
-			$eliminare9=1;
+		$ziDeSarbatoareA2R=strtotime(date('Y-06-13'));//A doua zi de Rusalii(A2R)
+		if(($begin<=$ziDeSarbatoareA2R)&&($ziDeSarbatoareA2R<=$end)){
+			$eliminareA2R=1;
 		}
 		else{
-			$eliminare9=0;
+			$eliminareA2R=0;
 		}
-		$ziDeSarbatoare10=strtotime(date('Y-12-01'));//1 Decembrie
-		if(($begin<=$ziDeSarbatoare10)&&($ziDeSarbatoare10<=$end)){
-			$eliminare10=1;
-		}
-		else{
-			$eliminare10=0;
-		}
-		$ziDeSarbatoare11=strtotime(date('Y-12-25'));//Prima zi de craciun
-		if(($begin<=$ziDeSarbatoare11)&&($ziDeSarbatoare11<=$end)){
-			$eliminare11=1;
+		$ziDeSarbatoareSM=strtotime(date('Y-08-15'));//Sfanta Marie(SM)
+		if(($begin<=$ziDeSarbatoareSM)&&($ziDeSarbatoareSM<=$end)){
+			$eliminareSM=1;
 		}
 		else{
-			$eliminare11=0;
+			$eliminareSM = 0;
+		}
+		$ziDeSarbatoareSAA=strtotime(date('Y-11-30'));//Sfantul Apostol Andrei(SAA)
+		if(($begin<=$ziDeSarbatoareSAA)&&($ziDeSarbatoareSAA<=$end)){
+			$eliminareSAA=1;
+		}
+		else{
+			$eliminareSAA=0;
+		}
+		$ziDeSarbatoare1D=strtotime(date('Y-12-01'));//1 Decembrie(1D)
+		if(($begin<=$ziDeSarbatoare1D)&&($ziDeSarbatoare1D<=$end)){
+			$eliminare1D=1;
+		}
+		else{
+			$eliminare1D=0;
+		}
+		$ziDeSarbatoare1C=strtotime(date('Y-12-25'));//Prima zi de craciun(1C)
+		if(($begin<=$ziDeSarbatoare1C)&&($ziDeSarbatoare1C<=$end)){
+			$eliminare1C=1;
+		}
+		else{
+			$eliminare1C=0;
+		}
+		$ziDeSarbatoare2C=strtotime(date('Y-12-26'));//A doua zi de craciun(2C)
+		if(($begin<=$ziDeSarbatoare2C)&&($ziDeSarbatoare2C<=$end)){
+			$eliminare2C=1;
+		}
+		else{
+			$eliminare2C=0;
 		}
 		//			
 		if($begin>$end){
@@ -192,7 +209,7 @@
 				 };
 				$begin+=86400; // adaugam 1 zi
 		  }
-		  $eliminare=$eliminare1+$eliminare2+$eliminare3+$eliminare4+$eliminare5+$eliminare6+$eliminare7+$eliminare8+$eliminare9+$eliminare10+$eliminare11+$eliminare2020;
+		  $eliminare=$eliminareAN+$eliminareAN2+$eliminareZUP+$eliminareVM+$eliminareA2P+$eliminare1I+$eliminareA2R+$eliminareSM+$eliminareSAA+$eliminare1D+$eliminare1C+$eliminare2C;
 		  $working_days=$no_days-$weekends-$eliminare;
 		  return $working_days;
 	 	}
