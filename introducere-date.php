@@ -111,19 +111,19 @@
 				echo'Concediu aferent anului:';
 				echo'<select name="anAles">';
 					echo'<option value="0">...</option>';
-
+/*
 					$an0=date("Y");
 					$an1=$an0-2;
 					$an2=$an0-1;
 					$sirAnAles=array($an1,$an2,$an0);
-/*
+*/
 					$an0=date("Y");
 					$an1=$an0-1;
 					$an2=$an0-2;
-					$an_provizoriu = '2022';//introdus anul 2022 PROVIZORIU
+					$an_provizoriu = '2023';//introdus anul 2023 PROVIZORIU
 
 					$sirAnAles=array($an1,$an0,$an_provizoriu);
-*/
+
 					foreach($sirAnAles as $key=>$value){
 						echo'<option value="'.$value.'"';
 						if(isset($anAles)&&($anAles==$value)){

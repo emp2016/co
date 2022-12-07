@@ -71,10 +71,10 @@
 				$anul2=$anul0-2;
 				$sirAni=[$anul2,$anul1,$anul0];
 */
-				$anul0=date("Y");
+				//$anul0=date("Y");
+				$anul0 = "2023";//introdus anul 2023 PROVIZORIU
 				$anul1=$anul0-1;
 				$anul2=$anul0-2;
-				$an_provizoriu = '2022';//introdus anul 2022 PROVIZORIU
 
 				$sirAni=[$anul2,$anul1,$anul0];
 

@@ -52,7 +52,8 @@
 		$anul2Functie=$anul0Functie+1;
 		$sirAniFunctie=[$anul1Functie,$anul0Functie,$anul2Functie];
 */
-		$anul0Functie=date("Y");
+		//$anul0Functie=date("Y"); 
+		$anul0Functie=2023;//PROVIZORIU PUNEM 2023 
 		$anul1Functie=$anul0Functie-2;
 		$anul2Functie=$anul0Functie-1;
 		$sirAniFunctie=[$anul1Functie,$anul2Functie,$anul0Functie];
@@ -98,7 +99,7 @@
 		}
 */
 
-		$ziDeSarbatoareAN=strtotime(date('Y-01-01'));//anul nou(AN)
+		$ziDeSarbatoareAN=strtotime(date('2023-01-01'));//anul nou(AN), PROVIZORIU AM PUS ANUL 2023 PENTRU CEI CARE ISI IAU CONCEDIU IN LUNA DECEMBRIE 2022
 		if(($begin<=$ziDeSarbatoareAN)&&($ziDeSarbatoareAN<=$end)){
 			$eliminareAN=1;
 		}
@@ -106,7 +107,7 @@
 			$eliminareAN=0;
 		}
 
-		$ziDeSarbatoareAN2=strtotime(date('Y-01-02'));//a doua zi de An Nou(AN2)
+		$ziDeSarbatoareAN2=strtotime(date('2023-01-02'));//a doua zi de An Nou(AN2)
 		if(($begin<=$ziDeSarbatoareAN2)&&($ziDeSarbatoareAN2<=$end)){
 			$eliminareAN2=1;
 		}
@@ -122,21 +123,21 @@
 			$eliminareZUP=0;
 		}
 
-		$ziDeSarbatoareVM=strtotime(date('Y-04-22'));//Vinerea Mare(VM)
+		$ziDeSarbatoareVM=strtotime(date('Y-04-14'));//Vinerea Mare(VM)
 		if(($begin<=$ziDeSarbatoareVM)&&($ziDeSarbatoareVM<=$end)){
 			$eliminareVM=1;
 		}
 		else{
 			$eliminareVM=0;
 		}
-		$ziDeSarbatoareA2P=strtotime(date('Y-04-25'));//A doua zi de Paste(A2P)
+		$ziDeSarbatoareA2P=strtotime(date('Y-04-17'));//A doua zi de Paste(A2P)
 		if(($begin<=$ziDeSarbatoareA2P)&&($ziDeSarbatoareA2P<=$end)){
 			$eliminareA2P=1;
 		}
 		else{
 			$eliminareA2P=0;
 		}
-/*
+
 		$ziDeSarbatoare6=strtotime(date('Y-05-01'));//1 Mai
 		if(($begin<=$ziDeSarbatoare6)&&($ziDeSarbatoare6<=$end)){
 			$eliminare6=1;
@@ -144,7 +145,7 @@
 		else{
 			$eliminare6=0;
 		}
-*/
+
 		$ziDeSarbatoare1I=strtotime(date('Y-06-01'));//1 Iunie(1I)
 		if(($begin<=$ziDeSarbatoare1I)&&($ziDeSarbatoare1I<=$end)){
 			$eliminare1I=1;
@@ -152,7 +153,7 @@
 		else{
 			$eliminare1I=0;
 		}
-		$ziDeSarbatoareA2R=strtotime(date('Y-06-13'));//A doua zi de Rusalii(A2R)
+		$ziDeSarbatoareA2R=strtotime(date('Y-06-05'));//A doua zi de Rusalii(A2R)
 		if(($begin<=$ziDeSarbatoareA2R)&&($ziDeSarbatoareA2R<=$end)){
 			$eliminareA2R=1;
 		}

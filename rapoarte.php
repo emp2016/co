@@ -38,7 +38,7 @@
 		}
 		if($okNumePersonal==1){
 			$sql = "select * from concediu where nume=:numePersonalRapoarte and stare=1 order by dataInceput desc";
-			$sir=['numePersonalRapoarte'=>$numePersonalRapoarte,];
+			$sir=['numePersonalRapoarte'=>$numePersonalRapoarte];
 			$stmtPersonal=$con->prepare($sql);
 			$stmtPersonal->execute($sir);
 			$ok=1;
@@ -90,7 +90,8 @@
 				$anul1=$anul0-1;
 				$anul2=$anul0+1;
 */
-				$anul0=date("Y");
+				//$anul0=date("Y");
+				$anul0 =2023;//PROVIZORIU PENTRU LUNA DECEMBRIE 2022
 				$anul1=$anul0-2;
 				$anul2=$anul0-1;
 				//$an_provizoriu = '2022';//introdus anul 2022 PROVIZORIU
