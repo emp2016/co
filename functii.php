@@ -52,8 +52,8 @@
 		$anul2Functie=$anul0Functie+1;
 		$sirAniFunctie=[$anul1Functie,$anul0Functie,$anul2Functie];
 */
-		//$anul0Functie=date("Y"); 
-		$anul0Functie=2023;//PROVIZORIU PUNEM 2023 
+		$anul0Functie=date("Y"); 
+		//$anul0Functie=2023;//PROVIZORIU PUNEM 2023 
 		$anul1Functie=$anul0Functie-2;
 		$anul2Functie=$anul0Functie-1;
 		$sirAniFunctie=[$anul1Functie,$anul2Functie,$anul0Functie];
@@ -99,7 +99,7 @@
 		}
 */
 
-		$ziDeSarbatoareAN=strtotime(date('2023-01-01'));//anul nou(AN), PROVIZORIU AM PUS ANUL 2023 PENTRU CEI CARE ISI IAU CONCEDIU IN LUNA DECEMBRIE 2022
+		$ziDeSarbatoareAN=strtotime(date('Y-01-01'));//anul nou(AN), PROVIZORIU AM PUS ANUL 2023 PENTRU CEI CARE ISI IAU CONCEDIU IN LUNA DECEMBRIE 2022
 		if(($begin<=$ziDeSarbatoareAN)&&($ziDeSarbatoareAN<=$end)){
 			$eliminareAN=1;
 		}
@@ -107,7 +107,7 @@
 			$eliminareAN=0;
 		}
 
-		$ziDeSarbatoareAN2=strtotime(date('2023-01-02'));//a doua zi de An Nou(AN2)
+		$ziDeSarbatoareAN2=strtotime(date('Y-01-02'));//a doua zi de An Nou(AN2)
 		if(($begin<=$ziDeSarbatoareAN2)&&($ziDeSarbatoareAN2<=$end)){
 			$eliminareAN2=1;
 		}

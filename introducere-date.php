@@ -120,9 +120,9 @@
 					$an0=date("Y");
 					$an1=$an0-1;
 					$an2=$an0-2;
-					$an_provizoriu = '2023';//introdus anul 2023 PROVIZORIU
+					//$an_provizoriu = '2023';//introdus anul 2023 PROVIZORIU
 
-					$sirAnAles=array($an1,$an0,$an_provizoriu);
+					$sirAnAles=array($an0,$an1,$an2);
 
 					foreach($sirAnAles as $key=>$value){
 						echo'<option value="'.$value.'"';
